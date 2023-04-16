@@ -11,6 +11,7 @@ class HomePage extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Test"),
+        centerTitle: true,
       ),
       body: Center(
         child: Consumer(

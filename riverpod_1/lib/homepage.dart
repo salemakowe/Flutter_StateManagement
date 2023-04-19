@@ -1,35 +1,34 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final mycounter = StateProvider((ref) => 0);
 
-class HomePage extends ConsumerWidget {
+class HomePage extends ConsumerStatefulWidget {
   const HomePage({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<ConsumerStatefulWidget> createState() => _HomePageState();
+}
+
+class _HomePageState extends ConsumerState<HomePage> {
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("RiverpodTest"),
+        title: const Text("RiverPod"),
         centerTitle: true,
-        actions: [],
       ),
       body: Center(
         child: Column(
           children: [
             Consumer(
-              builder: (context, ref, _) {
-                final count = ref
-                    .watch(mycounter); //watching the StateProvider for change
+              builder: (context, ref, child) {
+                final count = ref.watch(mycounter);
                 return Text('$count');
               },
             ),
           ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => ref.read(mycounter.notifier).state++,
-        child: const Icon(Icons.add),
       ),
     );
   }

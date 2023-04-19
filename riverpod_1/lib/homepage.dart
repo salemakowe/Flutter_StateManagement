@@ -20,6 +20,7 @@ class _HomePageState extends ConsumerState<HomePage> {
       ),
       body: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Consumer(
               builder: (context, ref, child) {
@@ -30,6 +31,8 @@ class _HomePageState extends ConsumerState<HomePage> {
           ],
         ),
       ),
+
+      //floating button
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           ref.read(mycounter.notifier).state++;

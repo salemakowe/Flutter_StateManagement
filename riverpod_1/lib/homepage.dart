@@ -30,6 +30,12 @@ class _HomePageState extends ConsumerState<HomePage> {
           ],
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          ref.read(mycounter.notifier).state++;
+        },
+        child: const Icon(Icons.add),
+      ),
     );
   }
 }
